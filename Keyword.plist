@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>$PROGRAM</key>
+	<string></string>
+	<key>$BEGIN</key>
+	<string></string>
+	<key>$END</key>
+	<string></string>
+	<key>$CONST</key>
+	<string></string>
+	<key>$VAR</key>
+	<string></string>
+	<key>$WHILE</key>
+	<string></string>
+	<key>$DO</key>
+	<string></string>
+	<key>$IF</key>
+	<string></string>
+	<key>$THEN</key>
+	<string></string>
+</dict>
+</plist>
