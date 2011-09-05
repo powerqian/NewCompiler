@@ -45,6 +45,8 @@
 {
     for ( NSNumber *aNum in aList ) {
         
+        NSLog(@"backpatch intermediate code:%@ with value %@",[intermediateCode objectAtIndex:[aNum unsignedLongValue]],aValue);
+        
         NSMutableString *stringToBackpatch = [intermediateCode objectAtIndex:[aNum unsignedLongValue]];
         [stringToBackpatch replaceCharactersInRange:[stringToBackpatch rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] 
                                                                                        options:NSBackwardsSearch]
@@ -322,22 +324,28 @@
         ++sym;
         
         NSArray *statement1 = [self statement];
+        nextlist = statement1;
         
         if ( statement1 != nil ){
+//            unsigned long tempSym;
             
             while ([[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$SEMICOLON"]){
-                NSLog(@"Parser Effected");;
+                NSLog(@"Parser Effected");
                 ++sym;
                 
-                NSString *Mquad = [NSString stringWithFormat:@"%lu",[intermediateCode count]];
+                NSNumber *Mquad = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
                 
                 NSArray *statement2 = [self statement];
                 if( statement2 != nil ){
-                    [self backpatch:statement1 withValue:Mquad];
+                    
+                    [self backpatch:statement1 withValue:[Mquad stringValue]];
                     nextlist = statement2;
+                    statement1 = statement2;
                 }
-                else { sym = currentSym; return nil; }
+                else break;
+//                tempSym = sym;
             }
+//            sym = tempSym;
         }
         else { sym = currentSym; return nil; }
         
@@ -372,7 +380,8 @@
     else {
         NSArray *conditionStatement = [self conditionStatement];
         if ( conditionStatement != nil ) {
-            [nextlist arrayByAddingObjectsFromArray:conditionStatement];
+            nextlist = conditionStatement;
+//            [nextlist arrayByAddingObjectsFromArray:conditionStatement];
             return nextlist;
         }//条件语句
         else {
@@ -381,7 +390,10 @@
                 //
                 //
 //                [nextlist arrayByAddingObjectsFromArray:loopStatement];
-                nextlist = [loopStatement lastObject];
+                nextlist = [loopStatement objectAtIndex:0];
+                NSString *ic = [NSString stringWithFormat:@"j,-,-,%@",[loopStatement objectAtIndex:1]];
+                [intermediateCode addObject:ic];
+                NSLog(@"%@",ic);
                 return nextlist;
             }//循环
             else {
@@ -398,7 +410,7 @@
                     unsigned long newCurrentSym = sym;
                     if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$END"] ) {
                         sym = newCurrentSym;
-                        return nextlist;
+                        return nil;
                     }
                     else { sym = currentSym; return nil; }
                 }
@@ -578,14 +590,14 @@
         
         //
         //
-        return returnValue;
+        return [NSString stringWithString:@"+"];
     }//if PLUS
     else if ([returnValue isEqualToString:@"$MINUS"]){
         NSLog(@"About to %@",returnValue);
         ++sym;
         //
         //
-        return returnValue;
+        return [NSString stringWithString:@"-"];
     }//if MINUS
     else { sym = currentSym; return nil; }
 }
@@ -600,14 +612,14 @@
         ++sym;
         //
         //
-        return returnValue;
+        return [NSString stringWithString:@"*"];
     }//if MULTI
     else if ( [returnValue isEqualToString:@"$DIVIDE"] ){
         NSLog(@"Parser Effected");;
         ++sym;
         //
         //
-        return returnValue;
+        return [NSString stringWithString:@"/"];
     }//if DIVIDE
     else { sym = currentSym; return nil; }
 }
@@ -627,29 +639,18 @@
         NSArray *condition = [self condition];
         if ( condition != nil ) {
             
-            NSArray *truelist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:[intermediateCode count]]];
-            NSArray *falselist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:([intermediateCode count]+1)]];
-            
-            NSMutableString *ic = [NSMutableString stringWithFormat:@"j%@,%@,%@,0",
-                            [condition objectAtIndex:1],[condition objectAtIndex:0],[condition objectAtIndex:2]];
-            [intermediateCode addObject:ic];
-            NSLog(@"Generated an intermediate code:%@",ic);
-            ic = [NSMutableString stringWithString:@"j,-,-,0"];
-            [intermediateCode addObject:ic];
-            NSLog(@"Generated an intermediate code:%@",ic);
-            
-            
             if ([[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$THEN"]){
                 NSLog(@"Parser Effected");;
                 ++sym;
                 
-                NSNumber *thenIndex = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
+                NSNumber *Mquad = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
                 
                 NSArray *statement = [self statement];
                 if ( statement != nil ) { 
                     
-                    [self backpatch:truelist withValue:[thenIndex stringValue]];
-                    return [NSArray arrayWithObjects:falselist, statement, nil];
+                    [self backpatch:[condition objectAtIndex:0]  withValue:[Mquad stringValue]];
+                    NSArray *returnValue = [NSArray arrayWithArray:[condition objectAtIndex:1]];
+                    return [returnValue arrayByAddingObjectsFromArray:statement];
                 }
                 else { sym = currentSym; return nil; }
             }//if IF
@@ -668,36 +669,35 @@
         NSLog(@"Parser Effected");;
         ++sym;
         
-        NSNumber *whileIndex = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
+        NSNumber *M1quad = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
         
         NSArray *condition = [self condition];
         if ( condition != nil ) {
             
-            NSArray *truelist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:[intermediateCode count]]];
-            NSArray *falselist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:([intermediateCode count]+1)]];
-            
-            NSMutableString *ic = [NSMutableString stringWithFormat:@"j%@,%@,%@,0",
-                            [condition objectAtIndex:1],[condition objectAtIndex:0],[condition objectAtIndex:2]];
-            [intermediateCode addObject:ic];
-            NSLog(@"Generated an intermediate code:%@",ic);
-            ic = [NSMutableString stringWithString:@"j,-,-,0"];
-            [intermediateCode addObject:ic];
-            NSLog(@"Generated an intermediate code:%@",ic);
-            
+//            NSArray *truelist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:[intermediateCode count]]];
+//            NSArray *falselist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:([intermediateCode count]+1)]];
+//            
+//            NSMutableString *ic = [NSMutableString stringWithFormat:@"j%@,%@,%@,0",
+//                            [condition objectAtIndex:1],[condition objectAtIndex:0],[condition objectAtIndex:2]];
+//            [intermediateCode addObject:ic];
+//            NSLog(@"Generated an intermediate code:%@",ic);
+//            ic = [NSMutableString stringWithString:@"j,-,-,0"];
+//            [intermediateCode addObject:ic];
+//            NSLog(@"Generated an intermediate code:%@",ic);
             
             if ([[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$DO"]) {
                 NSLog(@"Parser Effected");;
                 ++sym;
                 
-                NSNumber *doIndex = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
+                NSNumber *M2quad = [NSNumber numberWithUnsignedLong:[intermediateCode count]];
                 
                 NSArray *statement = [self statement];
                 if ( statement != nil ) {
                     
-                    [self backpatch:statement withValue:[whileIndex stringValue]];
-                    [self backpatch:truelist withValue:[doIndex stringValue]];
-                    ic = [NSMutableString stringWithFormat:@"j,-,-,%lu",[whileIndex unsignedLongValue]];
-                    return falselist;
+                    [self backpatch:statement withValue:[M1quad stringValue]];
+                    [self backpatch:[condition objectAtIndex:0]  withValue:[M2quad stringValue]];
+//                    ic = [NSMutableString stringWithFormat:@"j,-,-,%lu",[whileIndex unsignedLongValue]];
+                    return [NSArray arrayWithObjects:[condition objectAtIndex:1], M1quad, nil];
                 }
                 else { sym = currentSym; return nil; }
             }
@@ -721,7 +721,17 @@
             NSString *expression2 = [self expression];
             if ( expression2 != nil ) {
                 
-                returnValue = [NSArray arrayWithObjects:expression1, compareOperations, expression2, nil];
+                NSArray *truelist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:[intermediateCode count]]];
+                NSArray *falselist = [NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:([intermediateCode count]+1)]];
+                
+                NSMutableString *ic = [NSMutableString stringWithFormat:@"j%@,%@,%@,0",compareOperations,expression1,expression2];
+                [intermediateCode addObject:ic];
+                NSLog(@"Generated an intermediate code:%@",ic);
+                ic = [NSMutableString stringWithString:@"j,-,-,0"];
+                [intermediateCode addObject:ic];
+                NSLog(@"Generated an intermediate code:%@",ic);
+                
+                returnValue = [NSArray arrayWithObjects:truelist, falselist, nil];
                 //
                 //
                 //

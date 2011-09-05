@@ -29,7 +29,7 @@
 -(void) loadText
 {
     NSString *directory = [@"~" stringByExpandingTildeInPath];
-    originText = [NSString stringWithContentsOfFile:[directory stringByAppendingString:@"/Compiler/test"] encoding:NSUTF8StringEncoding error:NULL];
+    originText = [NSString stringWithContentsOfFile:[directory stringByAppendingString:@"/Compiler/test1"] encoding:NSUTF8StringEncoding error:NULL];
     NSLog(@"%@",originText);
 
     keyword = [[NSDictionary dictionaryWithContentsOfFile:@"/Users/powerqian/Developer/Compiler/Compiler/Keyword.plist"] allKeys];
@@ -47,13 +47,15 @@
 //    [preprocessedText deleteCharactersInRange:aRange];
     preProcessedText = [NSMutableString stringWithString:originText];
     [preProcessedText replaceOccurrencesOfString:@"\t" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [preProcessedText length])];
+    [preProcessedText replaceOccurrencesOfString:@"\r" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [preProcessedText length])];
+    [preProcessedText replaceOccurrencesOfString:@"\n" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [preProcessedText length])];
     
-    while ([preProcessedText rangeOfCharacterFromSet:
-            [NSCharacterSet newlineCharacterSet]].location != NSNotFound) {    
-    [preProcessedText deleteCharactersInRange:
-     [preProcessedText rangeOfCharacterFromSet:
-      [NSCharacterSet newlineCharacterSet]]];
-    }
+//    while ([preProcessedText rangeOfCharacterFromSet:
+//            [NSCharacterSet newlineCharacterSet]].location != NSNotFound) {    
+//    [preProcessedText deleteCharactersInRange:
+//     [preProcessedText rangeOfCharacterFromSet:
+//      [NSCharacterSet newlineCharacterSet]]];
+//    }
     
     NSLog(@"%@",preProcessedText);
 //    [preProcessedText retain];

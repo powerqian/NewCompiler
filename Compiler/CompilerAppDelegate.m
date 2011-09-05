@@ -22,6 +22,8 @@
         NSLog(@"%@",str);
     }
     
+//    [aParser backpatch:[NSArray arrayWithObject:[NSNumber numberWithUnsignedLong:3]] withValue:@"10"];
+//    NSLog(@"%@",[aParser.intermediateCode objectAtIndex:3]);
 }
 
 @end

@@ -24,6 +24,7 @@
 @property (retain) NSMutableArray *intermediateCode;
 
 //-(int) loadLex:(NSArray *)aLex;
+
 -(NSString *) start;
 -(NSString *) beginningOfTheProgram;
 -(NSString *) parialProgram;
@@ -51,6 +52,8 @@
 -(NSString *) newTemp;
 
 -(void) error;
+-(void) backpatch:(NSArray *)aList withValue:(NSString *)aValue;
+
 
 
 
