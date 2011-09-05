@@ -13,11 +13,10 @@
 		AA2A23591413A243002E2424 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AA2A23571413A243002E2424 /* Credits.rtf */; };
 		AA2A235C1413A243002E2424 /* CompilerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A235B1413A243002E2424 /* CompilerAppDelegate.m */; };
 		AA2A235F1413A243002E2424 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2A235D1413A243002E2424 /* MainMenu.xib */; };
-		AA2A237D1413A2A4002E2424 /* Keyword.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA2A23751413A2A4002E2424 /* Keyword.plist */; };
-		AA2A237E1413A2A4002E2424 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A23771413A2A4002E2424 /* Lexer.m */; };
-		AA2A237F1413A2A4002E2424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A23781413A2A4002E2424 /* main.m */; };
-		AA2A23801413A2A4002E2424 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A237A1413A2A4002E2424 /* Parser.m */; };
-		AA2A23811413A2A4002E2424 /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A237C1413A2A4002E2424 /* SymbolTable.m */; };
+		AA4BE5701413A70D000636C3 /* Keyword.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA4BE5691413A70D000636C3 /* Keyword.plist */; };
+		AA4BE5711413A70D000636C3 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56B1413A70D000636C3 /* Lexer.m */; };
+		AA4BE5721413A70D000636C3 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56D1413A70D000636C3 /* Parser.m */; };
+		AA4BE5731413A70D000636C3 /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56F1413A70D000636C3 /* SymbolTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +33,13 @@
 		AA2A235A1413A243002E2424 /* CompilerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompilerAppDelegate.h; sourceTree = "<group>"; };
 		AA2A235B1413A243002E2424 /* CompilerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompilerAppDelegate.m; sourceTree = "<group>"; };
 		AA2A235E1413A243002E2424 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		AA2A23751413A2A4002E2424 /* Keyword.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keyword.plist; path = ../Keyword.plist; sourceTree = "<group>"; };
-		AA2A23761413A2A4002E2424 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexer.h; path = ../Lexer.h; sourceTree = "<group>"; };
-		AA2A23771413A2A4002E2424 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lexer.m; path = ../Lexer.m; sourceTree = "<group>"; };
-		AA2A23781413A2A4002E2424 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
-		AA2A23791413A2A4002E2424 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = ../Parser.h; sourceTree = "<group>"; };
-		AA2A237A1413A2A4002E2424 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = ../Parser.m; sourceTree = "<group>"; };
-		AA2A237B1413A2A4002E2424 /* SymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SymbolTable.h; path = ../SymbolTable.h; sourceTree = "<group>"; };
-		AA2A237C1413A2A4002E2424 /* SymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SymbolTable.m; path = ../SymbolTable.m; sourceTree = "<group>"; };
+		AA4BE5691413A70D000636C3 /* Keyword.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keyword.plist; path = ../../../../powerqian/Codes/Compiler/Compiler/Keyword.plist; sourceTree = "<group>"; };
+		AA4BE56A1413A70D000636C3 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexer.h; path = ../../../../powerqian/Codes/Compiler/Compiler/Lexer.h; sourceTree = "<group>"; };
+		AA4BE56B1413A70D000636C3 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lexer.m; path = ../../../../powerqian/Codes/Compiler/Compiler/Lexer.m; sourceTree = "<group>"; };
+		AA4BE56C1413A70D000636C3 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = ../../../../powerqian/Codes/Compiler/Compiler/Parser.h; sourceTree = "<group>"; };
+		AA4BE56D1413A70D000636C3 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = ../../../../powerqian/Codes/Compiler/Compiler/Parser.m; sourceTree = "<group>"; };
+		AA4BE56E1413A70D000636C3 /* SymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SymbolTable.h; path = ../../../../powerqian/Codes/Compiler/Compiler/SymbolTable.h; sourceTree = "<group>"; };
+		AA4BE56F1413A70D000636C3 /* SymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SymbolTable.m; path = ../../../../powerqian/Codes/Compiler/Compiler/SymbolTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,14 +93,13 @@
 		AA2A234E1413A243002E2424 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
-				AA2A23751413A2A4002E2424 /* Keyword.plist */,
-				AA2A23761413A2A4002E2424 /* Lexer.h */,
-				AA2A23771413A2A4002E2424 /* Lexer.m */,
-				AA2A23781413A2A4002E2424 /* main.m */,
-				AA2A23791413A2A4002E2424 /* Parser.h */,
-				AA2A237A1413A2A4002E2424 /* Parser.m */,
-				AA2A237B1413A2A4002E2424 /* SymbolTable.h */,
-				AA2A237C1413A2A4002E2424 /* SymbolTable.m */,
+				AA4BE5691413A70D000636C3 /* Keyword.plist */,
+				AA4BE56A1413A70D000636C3 /* Lexer.h */,
+				AA4BE56B1413A70D000636C3 /* Lexer.m */,
+				AA4BE56C1413A70D000636C3 /* Parser.h */,
+				AA4BE56D1413A70D000636C3 /* Parser.m */,
+				AA4BE56E1413A70D000636C3 /* SymbolTable.h */,
+				AA4BE56F1413A70D000636C3 /* SymbolTable.m */,
 				AA2A235A1413A243002E2424 /* CompilerAppDelegate.h */,
 				AA2A235B1413A243002E2424 /* CompilerAppDelegate.m */,
 				AA2A235D1413A243002E2424 /* MainMenu.xib */,
@@ -173,7 +170,7 @@
 				AA2A23531413A243002E2424 /* InfoPlist.strings in Resources */,
 				AA2A23591413A243002E2424 /* Credits.rtf in Resources */,
 				AA2A235F1413A243002E2424 /* MainMenu.xib in Resources */,
-				AA2A237D1413A2A4002E2424 /* Keyword.plist in Resources */,
+				AA4BE5701413A70D000636C3 /* Keyword.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,10 +183,9 @@
 			files = (
 				AA2A23551413A243002E2424 /* main.m in Sources */,
 				AA2A235C1413A243002E2424 /* CompilerAppDelegate.m in Sources */,
-				AA2A237E1413A2A4002E2424 /* Lexer.m in Sources */,
-				AA2A237F1413A2A4002E2424 /* main.m in Sources */,
-				AA2A23801413A2A4002E2424 /* Parser.m in Sources */,
-				AA2A23811413A2A4002E2424 /* SymbolTable.m in Sources */,
+				AA4BE5711413A70D000636C3 /* Lexer.m in Sources */,
+				AA4BE5721413A70D000636C3 /* Parser.m in Sources */,
+				AA4BE5731413A70D000636C3 /* SymbolTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +305,7 @@
 				AA2A23641413A243002E2424 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

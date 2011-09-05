@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Lexer.h"
-#import "SymbolTable.h"
+//#import "SymbolTable.h"
 
 @interface Parser : NSObject
 {

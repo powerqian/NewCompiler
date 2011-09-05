@@ -85,28 +85,24 @@
 
 -(NSString *) beginningOfTheProgram
 {
-    unsigned long currentSym = sym;
-    
-    if ( [[lexer lexicalAnalyze:&sym]  count] > 0 ) {    
+    unsigned long currentSym = sym;    
         
-        if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$PROGRAM"] ) {
-            NSLog(@"Parser Effected");
+    if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$PROGRAM"] ) {
+        NSLog(@"Parser Effected");
+        ++sym;
+        
+        if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$ID"] ) {
+            NSLog(@"Parser Effected");;
             ++sym;
-            
-            if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$ID"] ) {
-                NSLog(@"Parser Effected");;
-                ++sym;
-            }
-            else { sym = currentSym; return kFail; }
-            //
-            //
-            //
-            return kSuccess;
         }
         else { sym = currentSym; return kFail; }
-        
+        //
+        //
+        //
+        return kSuccess;
     }
-    else return kDone;
+    else { sym = currentSym; return kFail; }
+        
 }
 
 -(NSString *) parialProgram
@@ -398,7 +394,14 @@
 //                    NSLog(@"Parser Effected");;
 //                    return nextlist;
 //                }// 空语句
-                else { sym = currentSym; return nil; }
+                else {
+                    unsigned long newCurrentSym = sym;
+                    if ( [[[[lexer lexicalAnalyze:&sym] allKeys] lastObject] isEqualToString:@"$END"] ) {
+                        sym = newCurrentSym;
+                        return nextlist;
+                    }
+                    else { sym = currentSym; return nil; }
+                }
             }
         }
     }

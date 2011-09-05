@@ -15,6 +15,13 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    aParser = [[Parser alloc] init];
+    [aParser start];
+    
+    for (NSString *str in aParser.intermediateCode){
+        NSLog(@"%@",str);
+    }
+    
 }
 
 @end
