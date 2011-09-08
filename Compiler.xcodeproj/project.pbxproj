@@ -16,7 +16,6 @@
 		AA4BE5701413A70D000636C3 /* Keyword.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA4BE5691413A70D000636C3 /* Keyword.plist */; };
 		AA4BE5711413A70D000636C3 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56B1413A70D000636C3 /* Lexer.m */; };
 		AA4BE5721413A70D000636C3 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56D1413A70D000636C3 /* Parser.m */; };
-		AA4BE5731413A70D000636C3 /* SymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BE56F1413A70D000636C3 /* SymbolTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,6 @@
 		AA4BE56B1413A70D000636C3 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lexer.m; path = ../../../../powerqian/Codes/Compiler/Compiler/Lexer.m; sourceTree = "<group>"; };
 		AA4BE56C1413A70D000636C3 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = ../../../../powerqian/Codes/Compiler/Compiler/Parser.h; sourceTree = "<group>"; };
 		AA4BE56D1413A70D000636C3 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = ../../../../powerqian/Codes/Compiler/Compiler/Parser.m; sourceTree = "<group>"; };
-		AA4BE56E1413A70D000636C3 /* SymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SymbolTable.h; path = ../../../../powerqian/Codes/Compiler/Compiler/SymbolTable.h; sourceTree = "<group>"; };
-		AA4BE56F1413A70D000636C3 /* SymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SymbolTable.m; path = ../../../../powerqian/Codes/Compiler/Compiler/SymbolTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +95,6 @@
 				AA4BE56B1413A70D000636C3 /* Lexer.m */,
 				AA4BE56C1413A70D000636C3 /* Parser.h */,
 				AA4BE56D1413A70D000636C3 /* Parser.m */,
-				AA4BE56E1413A70D000636C3 /* SymbolTable.h */,
-				AA4BE56F1413A70D000636C3 /* SymbolTable.m */,
 				AA2A235A1413A243002E2424 /* CompilerAppDelegate.h */,
 				AA2A235B1413A243002E2424 /* CompilerAppDelegate.m */,
 				AA2A235D1413A243002E2424 /* MainMenu.xib */,
@@ -185,7 +180,6 @@
 				AA2A235C1413A243002E2424 /* CompilerAppDelegate.m in Sources */,
 				AA4BE5711413A70D000636C3 /* Lexer.m in Sources */,
 				AA4BE5721413A70D000636C3 /* Parser.m in Sources */,
-				AA4BE5731413A70D000636C3 /* SymbolTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

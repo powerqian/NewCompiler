@@ -13,26 +13,29 @@
 @synthesize originText;
 @synthesize preProcessedText;
 @synthesize result;
-//@synthesize table1;
+@synthesize keyword;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         // Initialization code here.
-        result = [NSMutableArray arrayWithCapacity:1024];
+        
+//        originText = [[NSString alloc] init];
+//        result = [NSMutableArray arrayWithCapacity:1024];
 //        table1 = [[SymbolTable alloc] init];
     }    
     return self;
 }
 
--(void) loadText
+-(void) loadText:(NSString *)text withKeyWordPath:(NSURL *)aPath
 {
-    NSString *directory = [@"~" stringByExpandingTildeInPath];
-    originText = [NSString stringWithContentsOfFile:[directory stringByAppendingString:@"/Compiler/test1"] encoding:NSUTF8StringEncoding error:NULL];
+    originText = [NSString stringWithString:text];
     NSLog(@"%@",originText);
 
-    keyword = [[NSDictionary dictionaryWithContentsOfFile:@"/Users/powerqian/Developer/Compiler/Compiler/Keyword.plist"] allKeys];
+    keyword = [[NSDictionary dictionaryWithContentsOfURL:aPath] allKeys];
+    [keyword retain];
+    
 //    for ( NSString *str in keyword ){
 //        NSLog(@"%@",str);
 //    }
@@ -65,7 +68,7 @@
 
 
 
-- (NSDictionary *) lexicalAnalyze:(unsigned long *)startFrom/* :(unsigned long)to*/
+- (NSDictionary *) lexicalAnalyze:(unsigned long *)startFrom
 {
     unsigned long i = *startFrom;
     if ( i>=[preProcessedText length] ){

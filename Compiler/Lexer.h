@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "SymbolTable.h"
 
 @interface Lexer : NSObject
 {
@@ -15,15 +14,14 @@
     NSMutableString *preProcessedText;
     NSMutableArray *result;
     NSArray *keyword;
-//    SymbolTable *table1;
 }
 
 @property (copy) NSString *originText;
 @property (copy) NSMutableString *preProcessedText;
 @property (retain) NSMutableArray *result;
-//@property (retain) SymbolTable *table1;
+@property (retain) NSArray *keyword;
 
-- (void) loadText;
+- (void) loadText:(NSString *)text withKeyWordPath:(NSURL *)aPath;
 - (void) preProcessor;
 - (NSDictionary *) lexicalAnalyze:(unsigned long *)startFrom;
 

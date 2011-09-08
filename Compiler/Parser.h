@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Lexer.h"
-//#import "SymbolTable.h"
 
 @interface Parser : NSObject
 {
     unsigned long sym;
     NSArray *lex;
-//    SymbolTable *table;
     NSMutableArray *intermediateCode;
     NSMutableArray *constTable;
     NSMutableArray *commonTable;
@@ -22,6 +20,8 @@
 }
 
 @property (retain) NSMutableArray *intermediateCode;
+@property (retain) Lexer *lexer;
+@property (assign) unsigned long sym;
 
 //-(int) loadLex:(NSArray *)aLex;
 
@@ -46,13 +46,11 @@
 -(NSArray *) loopStatement;
 -(NSArray *) condition;
 -(NSString *) compareOperations;
-//-(NSString *) characters;
-//-(NSString *) numbers;
 
 -(NSString *) newTemp;
 
 -(void) error;
--(void) backpatch:(NSArray *)aList withValue:(NSString *)aValue;
+-(void) backpatch:(NSArray *)aList withValue:(NSNumber *)aValue;
 
 
 
